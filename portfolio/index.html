@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Manushree M | Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <style>
+    :root {
+      --navy: #192340;
+      --accent: #245bc5;
+      --white: #fff;
+      --soft-gray: #f5f7fc;
+      --container-max: 1100px;
+      --skills-blue: #e8eefe;
+      --skills-accent: #d9e9fa;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Poppins', Arial, sans-serif;
+      margin: 0;
+      background: var(--navy);
+      color: var(--navy);
+      min-height: 100vh;
+    }
+    .navbar {
+      width: 97%;
+      background: var(--white);
+      box-shadow: 0 2px 14px #1a295c22;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0; left: 0;
+      z-index: 99;
+      padding: 10px 24px 10px 32px;
+    }
+    .nav-logo {
+      font-weight: 700;
+      font-size: 2rem;
+      color: var(--accent);
+      letter-spacing: 1.7px;
+      cursor: pointer;
+    }
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+      align-items: center;
+      margin: 0;
+      font-size: 1.13rem;
+    }
+    .nav-links li a {
+      color: var(--navy);
+      text-decoration: none;
+      transition: color 0.2s;
+      font-weight:500;
+    }
+    .nav-links li a:hover, .nav-links li.active a {
+      color: var(--accent);
+      font-weight:700;
+    }
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 8px;
+      cursor: pointer;
+    }
+    .hamburger span {
+      width: 32px;
+      height: 3.5px;
+      background: var(--navy);
+      border-radius: 9px;
+      display: block;
+      transition: all 0.3s;
+    }
+    .hero {
+      max-width: 1100px;
+      margin: 48px auto 0 auto;
+      display: flex;
+      align-items: center;      /* Vertical centering between image and info */
+      gap: 48px;
+      background: #fff;
+      border-radius: 48px;
+      box-shadow: 0 6px 32px #00154025;
+      padding: 64px 52px;
+      height: 500px;        /* Ensure enough height for vertical centering */
+    }
+
+    .hero-img-container {
+      flex: 0 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-image {
+      width: 300px;
+      height: 300px;
+      object-fit: cover;
+      border-radius: 50%;
+      box-shadow: 0 2px 30px #ddd;
+      border: 8px solid #fff;
+      background: #eee;
+    }
+
+    .hero-info {
+      flex: 1 1 0%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;      /* Horizontal centering */
+      justify-content: center;  /* Vertical centering */
+      text-align: center;
+      /* Removed: height: 100%; */
+    }
+    .hero-greeting {
+      font-size: 1.13rem;
+      margin-bottom: 5px;
+      color: #245bc5;
+    }
+    .hero-name {
+      font-size: 2.7rem;
+      font-weight: 700;
+      margin: 0 0 7px 0;
+      color: #192340;
+    }
+    .hero-title {
+      font-size: 1.3rem;
+      color: #545c6a;
+      font-weight: 500;
+      margin-bottom: 22px;
+    }
+    .hero-actions {
+      display: flex;
+      gap: 18px;
+      margin-bottom: 20px;
+    }
+    .hero-btn {
+      padding: 11px 34px;
+      font-size: 1.08rem;
+      border-radius: 30px;
+      font-weight: 600;
+      box-shadow: 0 2px 10px #ecf2fa;
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s;
+      display: inline-block;
+    }
+    .hero-btn.outline {
+      background: #fff;
+      color: #192340;
+      border: 2.5px solid #192340;
+    }
+    .hero-btn.outline:hover {
+      background: #fff;
+      color: #245bc5;
+      border-color: #245bc5;
+    }
+    .hero-btn.solid {
+      background: #192340;
+      color: #fff;
+      border: 2.5px solid #192340;
+    }
+    .hero-btn.solid:hover {
+      background: #245bc5;
+      border-color: #245bc5;
+    }
+    .hero-socials {
+      margin-top: 1px;
+      display: flex;
+      gap: 20px;
+    }
+    .hero-socials a {
+      font-size: 2.1rem;
+      color: #192340;
+      background: #f5f7fc;
+      border-radius: 50%;
+      padding: 9px 15px;
+      transition: background 0.2s, color 0.2s, transform 0.18s;
+      box-shadow: 0 1px 10px #e4e9f8;
+      display: inline-block;
+    }
+    .hero-socials a:hover {
+      color: #245bc5;
+      background: #fff;
+      transform: scale(1.1);
+    }
+    @media (max-width: 820px) {
+      .hero { flex-direction: column; text-align: center; padding:32px 8vw;}
+      .hero-img-container { margin-bottom: 24px; }
+      .hero-info { align-items: center; }
+    }
+    section {
+      max-width: var(--container-max);
+      margin: 38px auto 16px auto;
+      padding: 26px 31px 28px 31px;
+      border-radius:13px;
+      background: var(--white);
+      box-shadow: 0 3px 28px #0015401a;
+      opacity: 0; transform: translateY(42px);
+      transition: opacity .8s, transform .8s;
+    }
+    section.visible { opacity: 1; transform: translateY(0);}
+    section h2 {
+      font-size: 1.41rem; font-weight:700;
+      margin-bottom: 18px; color: var(--accent);
+      letter-spacing: 1.1px;
+      border-bottom: 2px solid var(--navy);
+      padding-bottom: 7px;
+      text-shadow:0 1px 7px #245bc51a;
+    }
+    .about-details {
+      font-size: 1.08rem; color: #252d49;
+      margin-bottom: 0; padding-left:6px; font-weight:500; line-height:1.7;
+    }
+    .skills-blocks-grid {
+      display: flex; flex-wrap: wrap; gap: 30px 32px; margin-top: 24px;
+      justify-content: flex-start;
+    }
+    .skills-block {
+      background: var(--skills-blue);
+      border-radius: 15px;
+      box-shadow: 0 2px 14px #245bc514;
+      padding: 25px 28px 15px 28px;
+      min-width: 220px; max-width: 330px; flex:1 1 250px;
+      font-size: 1.06rem;
+      line-height: 1.6;
+      color: var(--navy);
+      border-left: 7px solid var(--accent);
+      transition: box-shadow 0.2s;
+    }
+    .skills-block h3 {
+      margin-top: 0; margin-bottom: 14px; color: var(--navy);
+      font-size: 1.12rem; font-weight:700;
+      letter-spacing: 0.8px;
+    }
+    .tech-block { border-color: #245bc5;}
+    .sec-block { border-color: #fdba53; }
+    .soft-block { border-color: #74cbe6; }
+    .lang-block { border-color: #3798ff;}
+    .skills-block ul { list-style:none; margin:0; padding:0;}
+    .skills-block ul li { margin-bottom:7px; color:#123866; font-weight:500;}
+    .card-grid { display: flex; flex-wrap:wrap; gap:32px; }
+    .card {
+      background: var(--soft-gray);
+      border-radius:14px;
+      box-shadow:0 2px 18px #1a295c18;
+      padding: 28px 22px 22px 22px;
+      font-size:1.1rem;
+      flex: 1 1 440px; min-width: 320px; max-width: 100%;
+      margin-bottom: 12px;
+      line-height: 1.7; color: #1a2540;
+      font-weight:500;
+    }
+    .card strong { color: var(--navy);}
+    .card-title { font-size:1.17rem; font-weight:700; color: var(--accent);}
+    .card-desc { margin:9px 0 0 0; font-size:1.07rem; color:#304262;}
+    .contact-list {
+      list-style:none; font-size:1.10rem;
+      padding-left:14px;
+    }
+    .contact-list li { margin-bottom:10px;}
+    @media (max-width:1100px){
+      .hero{flex-direction:column;gap:19px;}
+      .hero-info{padding:12px;text-align:center;}
+      .hero-info .socials { justify-content: center;}
+      .skills-blocks-grid{gap:13px 12px;margin-top:18px;}
+      .skills-block{min-width:98vw;max-width:99vw;}
+    }
+    @media (max-width:800px){
+      .navbar{padding:10px;}
+      .nav-logo{margin-left:10px;font-size:1.2rem;}
+      .nav-links{gap:14px;}
+      section{margin:14px auto 7px auto;}
+      .card-grid{gap:8px;}
+      .card{min-width:95vw;}
+    }
+    @media (max-width:650px){
+      .navbar{flex-direction:row;padding:10px 2px;}
+      .nav-logo{font-size:1rem;}
+      .nav-links{position:absolute;top:51px;right:0;background:var(--white);flex-direction:column; width:100vw;box-shadow:0 2px 12px #0007;padding:14px 0 0 13px;display:none;z-index:98;}
+      .nav-links.open{display:flex;}
+      .nav-links li{margin:5px 0;}
+      .hamburger{display:flex;}
+      .skills-blocks-grid{gap:5px;}
+      .skills-block{padding:14px 8px;font-size:0.99em;}
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <span class="nav-logo" onclick="scrollToSection('hero')">Manushree M</span>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+  <div class="hero" id="hero">
+    <div class="hero-img-container">
+      <img class="hero-image" src="/Users/manushreee/portfolio/WhatsApp Image 2025-11-11 at 21.08.47.jpeg" alt="Profile photo">
+    </div>
+    <div class="hero-info">
+      <div class="hero-greeting">Hello, I'm</div>
+      <h1 class="hero-name">Manushree M</h1>
+      <h2 class="hero-title">AI/ML Developer</h2>
+      <div class="hero-actions">
+        <a href="/Users/manushreee/portfolio/MANUSHREE M CV.pdf" class="hero-btn outline" download>Download CV</a>
+        <a href="#contact" class="hero-btn solid">Contact Info</a>
+      </div>
+      <div class="hero-socials">
+        <a href="https://linkedin.com/in/manushreem" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/manushreegowda" target="_blank"><i class="fab fa-github"></i></a>
+      </div>
+    </div>
+  </div>
+  <section id="about">
+    <h2>About Me</h2>
+    <p class="about-details">
+      Dedicated and enthusiastic AI/ML Developer with a strong academic foundation and a passion for solving real-world problems using modern technology. Adept in Python programming, machine learning, data science, and emerging cloud solutions, backed by hands-on internships and impactful academic projects. Quick learner with a growth mindset, able to adapt to new tools and frameworks rapidly. Effective communicator and collaborative team player, known for creative problem-solving and positive contributions in cross-functional environments. Eager to join a dynamic organization to apply technical skills, deliver innovation, and continue learning in the fast-evolving field of artificial intelligence and software engineering.
+      <br>I have a strong foundation in Python and cloud, and am always eager to leverage technology to find novel solutions to problems.
+    </p>
+  </section>
+  <section id="skills">
+    <h2>Skills</h2>
+    <div class="skills-blocks-grid">
+      <div class="skills-block tech-block">
+        <h3>Technical Skills</h3>
+        <ul>
+          <li>Python, Java, C</li>
+          <li>SQL, MySQL</li>
+          <li>AWS, Docker, Git, GitHub</li>
+          <li>Machine Learning, Data Science, Generative AI</li>
+          <li>Web Development, PySpark</li>
+        </ul>
+      </div>
+      <div class="skills-block sec-block">
+        <h3>Security & Tools</h3>
+        <ul>
+          <li>Wireshark, Metasploit, Nmap,Scikit-learn</li>
+          <li>Cloud computng,AWS </li>
+          <li>Ubuntu, Windows,Linux</li>
+        </ul>
+      </div>
+      <div class="skills-block soft-block">
+        <h3>Soft Skills</h3>
+        <ul>
+          <li>Teamwork, Communication</li>
+          <li>Time Management, Leadership</li>
+          <li>Adaptability, Problem Solving</li>
+        </ul>
+      </div>
+      <div class="skills-block lang-block">
+        <h3>Languages</h3>
+        <ul>
+          <li>English, Kannada, Hindi, Telugu</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <section id="experience">
+    <h2>Experience</h2>
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-title"><strong>Junior Software Developer Intern</strong></div>
+        <div class="card-desc">
+          Stable CouponsSprint (International Internship)<br>
+          - Developed project management automation for GitHub workflows using Python and AI language models.<br>
+          - Worked in a multinational team to streamline code collaboration and issue tracking.<br>
+          - Built, tested, and deployed automation pipelines to accelerate engineering delivery and improve documentation quality.
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-title"><strong>Cyber Security Intern</strong></div>
+        <div class="card-desc">
+          Tech Fortune<br>
+          - Conducted vulnerability assessment and penetration testing using Wireshark, Metasploit, Nmap, and custom scripts.<br>
+          - Collaborated on strengthening security protocols and implementing cyber defense strategies.
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-title"><strong>Music Playlist Management System</strong></div>
+        <div class="card-desc">
+          • Created a feature-rich platform for organizing and sharing music playlists.<br>
+          • Built collaborative playlist editing and advanced track search (by genre, artist, or custom attributes).<br>
+          • Developed the backend in PHP and SQL, including user authentication, role management, and sharing controls.<br>
+          • Deployed web interface with a mobile-responsive UI.
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-title"><strong>Network Anomalies Detection (Hybrid ML)</strong></div>
+        <div class="card-desc">
+          • Engineered a real-time network anomaly detection tool combining Naive Bayes and Decision Tree ML models.<br>
+          • Integrated traffic monitoring, data preprocessing, and fast threat identification dashboards.<br>
+          • Used Python and Scikit-learn for model training and live anomaly flagging.<br>
+          • Resulted in improved detection accuracy and reduction in false positives.
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-title"><strong>Visionary Traffic Solutions for Urban Mobility</strong></div>
+        <div class="card-desc">
+          • Built an IoT-powered adaptive traffic control system for city intersections.<br>
+          • Designed sensors and edge devices for capturing real-time vehicle data.<br>
+          • Implemented AI algorithms to optimize signal timings, reduce congestion, and prioritize emergency vehicles.<br>
+          • Delivered prototype and analytics panel, achieving measurable improvements in traffic flow in simulations.
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="contact">
+    <h2>Contact</h2>
+    <ul class="contact-list">
+      <li><strong>Email:</strong> <a href="mailto:manushree699@gmail.com">manushree699@gmail.com</a></li>
+      <li><strong>Location:</strong> Bengaluru, Karnataka, India</li>
+      <li><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/manushreem" target="_blank">linkedin.com/in/manushreem</a></li>
+      <li><strong>GitHub:</strong> <a href="https://github.com/manushreegowda" target="_blank">github.com/manushreegowda</a></li>
+      <li><strong>Phone:</strong> +91 9353740845</li>
+    </ul>
+  </section>
+  <script>
+    function toggleMenu() {
+      document.getElementById('navLinks').classList.toggle('open');
+    }
+    function revealSections() {
+      const sections = document.querySelectorAll('section');
+      const trigger = window.innerHeight * 0.93;
+      sections.forEach((sec) => {
+        const top = sec.getBoundingClientRect().top;
+        if (top < trigger) sec.classList.add('visible');
+      });
+    }
+    window.addEventListener('scroll', revealSections);
+    window.addEventListener('load', revealSections);
+    function scrollToSection(sectionId) {
+      document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>
